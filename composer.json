@@ -1,0 +1,12 @@
+{
+    "name": "dell/twig-version",
+    "authors": [
+        {
+            "name": "Dahunsi Funmilayo",
+            "email": "funmi.425@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.21"
+    }
+}

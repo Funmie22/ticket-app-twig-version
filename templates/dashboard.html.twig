@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard - Tickify{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+  <header>
+    <h1>Welcome to Tickify Dashboard</h1>
+    <nav>
+      <a href="?page=tickets">View Tickets</a>
+      <a href="?page=logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-content">
+    <p>Your team’s overview and stats will appear here.</p>
+  </div>
+</section>
+{% endblock %}
