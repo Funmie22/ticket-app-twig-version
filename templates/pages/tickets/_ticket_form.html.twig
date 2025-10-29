@@ -1,0 +1,72 @@
+{% set initial = editing %}
+{% if initial %}
+  <form method="post" action="/?page=tickets/update" novalidate>
+    <input type="hidden" name="id" value="{{ initial.id }}" />
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-title">Title</label>
+      <input id="t-title" name="title" value="{{ initial.title }}" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;" />
+    </div>
+
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-desc">Description (optional)</label>
+      <textarea id="t-desc" name="description" rows="5" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;">{{ initial.description }}</textarea>
+    </div>
+
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-status">Status</label>
+      <select id="t-status" name="status" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;">
+        <option value="open" {{ initial.status == 'open' ? 'selected' : '' }}>open</option>
+        <option value="in_progress" {{ initial.status == 'in_progress' ? 'selected' : '' }}>in_progress</option>
+        <option value="closed" {{ initial.status == 'closed' ? 'selected' : '' }}>closed</option>
+      </select>
+    </div>
+
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-pri">Priority</label>
+      <select id="t-pri" name="priority" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;">
+        <option value="low" {{ initial.priority == 'low' ? 'selected' : '' }}>low</option>
+        <option value="normal" {{ initial.priority == 'normal' ? 'selected' : '' }}>normal</option>
+        <option value="high" {{ initial.priority == 'high' ? 'selected' : '' }}>high</option>
+      </select>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button class="btn-primary" type="submit">Save</button>
+      <a class="btn-ghost" href="/?page=tickets">Cancel</a>
+    </div>
+  </form>
+{% else %}
+  <form method="post" action="/?page=tickets/create" novalidate>
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-title">Title</label>
+      <input id="t-title" name="title" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;" />
+    </div>
+
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-desc">Description (optional)</label>
+      <textarea id="t-desc" name="description" rows="5" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;"></textarea>
+    </div>
+
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-status">Status</label>
+      <select id="t-status" name="status" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;">
+        <option value="open">open</option>
+        <option value="in_progress">in_progress</option>
+        <option value="closed">closed</option>
+      </select>
+    </div>
+
+    <div class="form-group" style="margin-top:8px;">
+      <label for="t-pri">Priority</label>
+      <select id="t-pri" name="priority" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd;">
+        <option value="low">low</option>
+        <option value="normal" selected>normal</option>
+        <option value="high">high</option>
+      </select>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button class="btn-primary" type="submit">Create</button>
+    </div>
+  </form>
+{% endif %}

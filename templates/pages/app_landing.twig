@@ -1,0 +1,10 @@
+{% extends 'layouts/base_public.html.twig' %}
+{% block title %}Tickify - Home{% endblock %}
+{% block body %}
+  {% include 'components/hero.html.twig' %}
+  <section class="features container" aria-label="features" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:24px;padding:24px 0;">
+    <div class="card form-card">⚡ Fast CRUD — Create, Read, Update, Delete</div>
+    <div class="card form-card">🔒 Protected routes & session simulation</div>
+    <div class="card form-card">🌍 Accessible and fully responsive</div>
+  </section>
+{% endblock %}

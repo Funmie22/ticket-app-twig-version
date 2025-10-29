@@ -1,0 +1,16 @@
+{% extends 'layouts/base_app.html.twig' %}
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+  <main class="container" style="padding:40px 20px;">
+    <h2>Dashboard</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:16px">
+      <div class="card form-card"><strong>Total</strong><div style="font-size:24px;margin-top:8px">{{ tickets|length }}</div></div>
+      <div class="card form-card"><strong>Open</strong><div style="font-size:24px;margin-top:8px">{{ tickets|filter(t => t.status == 'open')|length }}</div></div>
+      <div class="card form-card"><strong>Resolved</strong><div style="font-size:24px;margin-top:8px">{{ tickets|filter(t => t.status == 'closed')|length }}</div></div>
+    </div>
+
+    <div style="margin-top:24px">
+      <a class="btn" href="/?page=tickets">Manage Tickets</a>
+    </div>
+  </main>
+{% endblock %}

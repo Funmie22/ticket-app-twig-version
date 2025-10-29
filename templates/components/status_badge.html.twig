@@ -1,0 +1,3 @@
+{% set cls = 'status-open' %}
+{% if status == 'in_progress' %}{% set cls = 'status-in_progress' %}{% elseif status == 'closed' %}{% set cls = 'status-closed' %}{% endif %}
+<span class="status-badge {{ cls }}">{{ status|replace({'_':' '}) }}</span>

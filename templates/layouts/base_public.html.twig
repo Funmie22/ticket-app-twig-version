@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{% block title %}TicketApp{% endblock %}</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand"><strong>TicketApp</strong></div>
+        <div class="nav-links">
+          <a href="/?page=home">Home</a>
+          <a href="/?page=dashboard">Dashboard</a>
+          <a href="/?page=auth/login">Login</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      {% block body %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© {{ "now"|date("Y") }} TicketApp — Built with ❤️</div>
+    </footer>
+
+    {% if flash %}
+      {% include 'components/toast.html.twig' with { flash: flash } %}
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,35 @@
+:root {
+  --accent: #06b6d4;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --card: #f8f9fa;
+}
+body { font-family: Arial, sans-serif; color:#111; margin:0; background:#fff; }
+.container { max-width:980px; margin:0 auto; padding:0 18px; }
+.site-header { border-bottom:1px solid #eee; background:#fff; }
+.nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+.brand strong { font-size:18px; }
+.hamburger { background:transparent; border:0; font-size:20px; cursor:pointer; }
+.nav-links { display:flex; gap:12px; align-items:center; }
+.nav-links a, .nav-links button { text-decoration:none; color:#111; background:transparent; border:0; cursor:pointer; }
+.hero { background:linear-gradient(180deg,#eef7f8,#fff); padding:80px 0; text-align:center; }
+.hero-title { font-size:36px; margin:0; font-weight:700; }
+.hero-accent { display:block; font-weight:400; font-size:18px; color:var(--muted); margin-top:6px; }
+.btn { display:inline-block; padding:10px 16px; border-radius:6px; text-decoration:none; color:#fff; background:var(--accent); border:0; }
+.btn-primary { background:var(--accent); color:#fff; padding:8px 14px; border-radius:6px; text-decoration:none; }
+.btn-secondary { background:#0491a6; }
+.btn-ghost { background:transparent; border:1px solid #ddd; padding:8px 12px; border-radius:6px; }
+.form-card { background:var(--card); padding:18px; border-radius:8px; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+.ticket-grid { display:grid; gap:12px; margin-top:12px; }
+.ticket-card { border-radius:8px; background:#fff; padding:12px; box-shadow:0 4px 10px rgba(0,0,0,0.04); }
+.status-badge { padding:6px 8px; border-radius:6px; font-size:12px; text-transform:capitalize; }
+.status-open { background:#ecfdf5; color:#065f46; }
+.status-in_progress { background:#fef3c7; color:#92400e; }
+.status-closed { background:#fee2e2; color:#7f1d1d; }
+.small-muted { color:var(--muted); font-size:13px; }
+.site-footer { padding:20px 0; text-align:center; color:#777; margin-top:30px; }
+.toast { position:fixed; right:18px; bottom:18px; padding:12px 16px; border-radius:8px; color:#fff; z-index:9999; }
+@media (max-width:720px) {
+  .container { padding:0 12px; }
+  .hero { padding:48px 0; }
+}

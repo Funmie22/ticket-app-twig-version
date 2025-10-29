@@ -1,0 +1,53 @@
+{% extends 'layouts/base_app.html.twig' %}
+{% block title %}Tickets{% endblock %}
+{% block body %}
+  <main class="container" style="padding:32px 20px;">
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;">
+      <section>
+        <h2>Tickets</h2>
+        <div class="ticket-grid" aria-live="polite">
+          {% if tickets is empty %}
+            <p>No tickets yet. Create one.</p>
+          {% endif %}
+          {% for t in tickets %}
+            <article class="ticket-card" aria-labelledby="t-{{ t.id }}">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3 id="t-{{ t.id }}" class="ticket-title">{{ t.title }}</h3>
+                {% include 'components/status_badge.html.twig' with { status: t.status } %}
+              </div>
+              <p style="margin-top:8px;">{{ t.description ? t.description : '<span class=\"small-muted\">No description</span>' | raw }}</p>
+              <div style="margin-top:12px;display:flex;gap:8px">
+                <form method="get" action="/?page=tickets" style="display:inline">
+                  <input type="hidden" name="edit" value="{{ t.id }}" />
+                  <button class="btn-primary" type="submit">Edit</button>
+                </form>
+                <form method="post" action="/?page=tickets/delete" style="display:inline" onsubmit="return confirm('Delete this ticket?')">
+                  <input type="hidden" name="id" value="{{ t.id }}" />
+                  <button class="btn-danger" type="submit" style="background:#ef4444;color:#fff;padding:8px 12px;border-radius:6px;border:0;">Delete</button>
+                </form>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <aside>
+        <div class="form-card">
+          {% set editing = null %}
+          {% if app.request is defined %}
+            {% set editId = app.request.get('edit') %}
+          {% else %}
+            {% set editId = _GET.edit|default(null) %}
+          {% endif %}
+
+          {% if editId %}
+            {% for it in tickets %}{% if it.id == editId %}{% set editing = it %}{% endif %}{% endfor %}
+          {% endif %}
+
+          <h3>{{ editing ? 'Edit ticket' : 'Create ticket' }}</h3>
+          {% include 'pages/tickets/_ticket_form.html.twig' with { editing: editing } %}
+        </div>
+      </aside>
+    </div>
+  </main>
+{% endblock %}

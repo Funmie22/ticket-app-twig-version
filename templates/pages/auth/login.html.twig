@@ -1,0 +1,29 @@
+{% extends 'layouts/base_public.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block body %}
+  <main class="container" style="padding:40px 20px;">
+    <div style="max-width:640px;margin:0 auto;">
+      <div class="form-card" role="region" aria-labelledby="login-heading">
+        <h2 id="login-heading">Login</h2>
+        <form method="post" action="/?page=auth/login" novalidate>
+          <div class="form-group" style="margin-top:12px;">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" style="width:100%;padding:10px;margin-top:6px;border-radius:6px;border:1px solid #ddd;" />
+            <div class="small-muted" id="err-email" role="alert"></div>
+          </div>
+
+          <div class="form-group" style="margin-top:12px;">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" style="width:100%;padding:10px;margin-top:6px;border-radius:6px;border:1px solid #ddd;" />
+            <div class="small-muted" id="err-pass" role="alert"></div>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:12px;">
+            <button class="btn-primary" type="submit">Login</button>
+            <a href="/?page=auth/signup">Create account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+{% endblock %}
